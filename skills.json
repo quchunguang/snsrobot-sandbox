@@ -1,0 +1,817 @@
+[
+    {
+        "id": 1,
+        "objects": [
+            {
+                "id": 1,
+                "class": "effector1",
+                "type": "vision"
+            },
+            {
+                "id": 2,
+                "class": "reference1",
+                "type": "attach"
+            },
+            {
+                "id": 3,
+                "class": "target1",
+                "type": "vision"
+            },
+            {
+                "id": 4,
+                "class": "effector2",
+                "type": "vision"
+            },
+            {
+                "id": 5,
+                "class": "target2",
+                "type": "vision"
+            },
+            {
+                "id": 6,
+                "class": "reference2",
+                "type": "vision"
+            }
+        ],
+        "init_feature": {
+            "cr_f": "0000",
+            "pre_op_id": 1
+        },
+        "goal_feature": {
+            "cr_f": "0000",
+            "post_op_id": 4
+        },
+        "operations": [
+            {
+                "id": 1,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "10"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 1,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 2,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SWEW",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 2,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 3,
+                        "args": "z,pos",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "10"
+
+                            }
+                        ]
+                    },
+                    "TA": "ES",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 2,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 3,
+                        "args": "z,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SWEW",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 1,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 3,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "ES",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 1,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 3,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SAEB",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 3,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 4,
+                        "args": "y,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SBEB",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 7,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 3,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 1,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SAEW",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 8,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 5,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 1,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SWEB",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 1,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 6,
+                        "args": "x,neg",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SWEW",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            },
+            {
+                "id": 10,
+                "name": "Find Object",
+                "pre": [
+                    {
+                        "A": 3,
+                        "B": 2,
+                        "p_n": "front",
+                        "d": "0"
+                    },
+                    {
+                        "A": 5,
+                        "B": 1,
+                        "p_n": "above",
+                        "d": "10"
+                    }
+                ],
+                "action": {
+                    "A": {
+                        "id": 1,
+                        "args": "x,cw",
+                        "innate_skill": "rotate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "B": {
+                        "id": 3,
+                        "args": "z,pos",
+                        "innate_skill": "translate",
+                        "pre": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ],
+                        "post": [
+                            {
+                                "A": 3,
+                                "B": 2,
+                                "p_n": "front",
+                                "d": "0"
+
+                            }
+                        ]
+                    },
+                    "TA": "SWEB",
+                    "name": "effector",
+                    "type": "version"
+                },
+                "post": [
+                    {
+                        "A": 1,
+                        "B": 3,
+                        "p_n": "front&concide",
+                        "d": "11"
+                    }
+                ]
+            }
+        ]
+    }
+]
