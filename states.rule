@@ -2,7 +2,7 @@ states       ::= states.id + objects + states.states + actions
 objects      ::= list(object)
 object       ::= object.id + object.name + class + object.type + parent
 states.states::= list(state)
-state        ::= id+cr_f+sr_p
+state        ::= state.id + cr_f + sr_p
 sr_p         ::= list(sr_p_item)
 sr_p_item    ::= A + B + coordinate + x + y + z + p_n + d
 actions      ::= list(action)
@@ -12,11 +12,14 @@ action.B     ::= B.id + args + innate_skill
 
 A, B, A.id, B.id ::= object.id
 
+states.id    ::= <NUMBER>  ;; TODO: about this end point here
 object.id    ::= <NUMBER>  ;; TODO: about this end point here
 object.name  ::= <STRING>  ;; TODO: about this end point here
 class        ::= <STRING>  ;; TODO: about this end point here
 object.type  ::= <STRING>  ;; TODO: about this end point here
 parent       ::= <NUMBER>  ;; TODO: about this end point here
+state.id     ::= <NUMBER>  ;; TODO: about this end point here
+cr_f         ::= <STRING>  ;; TODO: about this end point here
 coordinate   ::= <STRING>  ;; TODO: about this end point here
 x            ::= <NUMBER>  ;; TODO: about this end point here
 y            ::= <NUMBER>  ;; TODO: about this end point here
