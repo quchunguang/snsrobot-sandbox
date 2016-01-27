@@ -21,8 +21,8 @@ Following program can be run via url,
 
 ### [Chapter 6](http://localhost:8000/c6.py)
 
-Notice that press <kbd>F5</kbd> again and again can simulate the same skill applies on
-many difference robots at many difference environment.
+Note that press <kbd>F5</kbd> again and again can simulate the situations that same skill applies on
+robots with different architecture in different environments.
 
 
 Run (CLI Interface)
