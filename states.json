@@ -3,42 +3,35 @@
     "objects": [
         {
             "id": 1,
-            "name": "book_A",
+            "name": "Box_A",
             "class": "target1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 2,
-            "name": "table",
+            "name": "Bed",
             "class": "reference1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 3,
-            "name": "book_B",
+            "name": "Box_B",
             "class": "target2",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 4,
-            "name": "robot_W.torso",
+            "name": "Wei.Torso",
             "class": "effector1",
             "pose": "robot_view",
             "parent": 0
         },
         {
-            "id": 5,
-            "name": "book_C",
-            "class": "reference2",
-            "pose": "robot_view",
-            "parent": 0
-        },
-        {
             "id": 6,
-            "name": "robot_W.torso2",
+            "name": "Wei.l_hand + Wei.r_hand",
             "class": "effector2",
             "pose": "robot_view",
             "parent": 4
@@ -451,23 +444,25 @@
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 4,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "ES"
         },
         {
             "id": 1,
             "A": {
-                "id": 1,
+                "id": 2,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 4,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "SWEB"
         },
         {
             "id": 2,
@@ -477,23 +472,25 @@
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 4,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "SWEW"
         },
         {
             "id": 3,
             "A": {
-                "id": 1,
+                "id": 3,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 4,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "SAEB"
         },
         {
             "id": 4,
@@ -503,10 +500,11 @@
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 3,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "SAEW"
         },
         {
             "id": 5,
@@ -516,10 +514,11 @@
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 2,
+                "id": 6,
                 "args": "x,cw",
                 "innate_skill": "rotate"
-            }
+            },
+            "TA": "SBEB"
         }
     ]
 }

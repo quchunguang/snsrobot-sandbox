@@ -211,18 +211,41 @@ def getStates():
         yield state
 
 
-def mapObjId(states_obj_id):
+mapObjStatusSkill = {}
+
+
+def mapObjById(skill_obj_id):
     """
     Run mapObjects() to generate `mapObjStatusSkill` before use this function.
-    Here just leave as TODO.
 
     Args:
-        states_obj_id: Object id in states.
+        skill_obj_id: Object id in the skill.
 
     Returns:
-        skill_obj_id: Object id in skill.
+        robot_obj: Mapping object from Robot B's version.
     """
-    return states_obj_id
+    try:
+        return mapObjStatusSkill[skill_obj_id]
+    except KeyError:
+        return {}  # if not found
+
+
+def mapObjects(objmap, skill):
+    """
+    Algorithm Entry - Mapping objects.
+
+    Mapping objects in abstracted world (itself) to real world (its class).
+    Mapping object id from `skill["objects"]` to Robot B's version.
+
+    There's three types of class in abstracted world (meta-class),
+        target    - The final goal target objects.
+        reference - Middle-wares,Tools,Supporters or sub-targets inside skill.
+        effector  - Some parts of robot itself. Head, left-hand, etc.
+    """
+    for osk in skill["objects"]:
+        for ost in objmap["objects"]:
+            if ost["class"] == osk["class"]:
+                mapObjStatusSkill[osk["id"]] = ost
 
 
 def transCoordinate(coordinate, x, y, z):
@@ -247,8 +270,8 @@ def matchItem(sr_p, sets):
     x, y, z = transCoordinate(sr_p["coordinate"],
                               sr_p["x"], sr_p["y"], sr_p["z"])
 
-    return mapObjId(sr_p["A"]) == sets["A"] and \
-        mapObjId(sr_p["B"]) == sets["B"] and \
+    return mapObjById(sr_p["A"])["id"] == sets["A"] and \
+        mapObjById(sr_p["B"])["id"] == sets["B"] and \
         distance(x, y, z) <= float(sets["d"])
 
 
@@ -293,7 +316,7 @@ def genTasks(skill, minLen, maxLen, minDelay):
     basetime = datetime.now()
 
     for obj in skill["objects"]:
-        taskNames[obj["id"]] = obj["class"]
+        taskNames[obj["id"]] = mapObjById(obj["id"])["name"]
         plan[obj["id"]] = 0
 
     for op in skill["operations"]:
@@ -465,10 +488,14 @@ def main():
     Arrange tasks from skills
     """
     # `skills` is the total memory of robot.
-    skills = readJson("skills.json")
+    skills = readJson("skills_create.json")
 
     # using skill (id=1)
     skill = getSkillById(skills, 1)
+
+    # Get object mapping from file.
+    objmap = readJson("objmap_Nao.json")
+    mapObjects(objmap, skill)
 
     # render gantt graph with the data of target skill
     renderGantt(skill)
