@@ -12,11 +12,20 @@ Run (Web Interface)
 
 ### [Chapter 5](http://localhost:8000/c5.py)
 
+Known skill mapping. This will print out a list of matching result between `sr_p`s in `states.json` and pre/post in `skills.json`.
+
+Unknown skill generate. This will generate a new skill to a json file `skills_create.json`.
+of skills.json.
+
 ### [Chapter 6](http://localhost:8000/c6.py)
 
-**Note of Chapter 6** that press <kbd>F5</kbd> again and again can simulate the situations that same skill applies on
+This will read a skill in `skills.json` (See Note 2) and use this skill to tell a real world Robot how to do. As a simulation, this program returns a Gantt Graph to show the schedule of the operations that the **"real"** robot done.
+
+**Note 1** that press <kbd>F5</kbd> again and again can simulate the situations that same skill applies on
 robots with different architecture in different environments.
 
+**Note 2**
+By default, the program using `skills_create.json` (generated from `Chapter 5`) instead of `skill.json`. So You need run `Chapter 5` first before run `Chapter 6` if you never run it before.
 
 Run (CLI Interface)
 -------------------

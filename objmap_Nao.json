@@ -2,21 +2,21 @@
     "objects": [
         {
             "id": 1,
-            "name": "Book_A",
+            "name": "Box_A",
             "class": "target1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 2,
-            "name": "Table",
+            "name": "Bed",
             "class": "reference1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 3,
-            "name": "Book_B",
+            "name": "Box_B",
             "class": "target2",
             "pose": "robot_view",
             "parent": 0

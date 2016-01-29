@@ -3,35 +3,35 @@
     "objects": [
         {
             "id": 1,
-            "name": "Box_A",
+            "name": "Book_A",
             "class": "target1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 2,
-            "name": "Bed",
+            "name": "Table",
             "class": "reference1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 3,
-            "name": "Box_B",
+            "name": "Book_B",
             "class": "target2",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 4,
-            "name": "Wei.Torso",
+            "name": "PR2.Torso",
             "class": "effector1",
             "pose": "robot_view",
             "parent": 0
         },
         {
             "id": 6,
-            "name": "Wei.l_hand + Wei.r_hand",
+            "name": "PR2.l_hand + PR2.r_hand",
             "class": "effector2",
             "pose": "robot_view",
             "parent": 4

@@ -540,22 +540,22 @@ def genTA(A, B):
     Generate TA from monitoring a pare agents' start/end time.
     """
 
-    if (A["agent_start"] == B["agent_start"]) and \
-       (B["agent_end"] < A["agent_end"]):
+    if A["agent_start"] == B["agent_start"] and \
+       B["agent_end"] < A["agent_end"]:
         return 'SWEB'
-    elif (A["agent_start"] < B["agent_start"]) and \
-         (A["agent_end"] == B["agent_end"]):
+    elif A["agent_start"] < B["agent_start"] and \
+            A["agent_end"] == B["agent_end"]:
         return 'SAEW'
-    elif (A["agent_start"] == B["agent_start"]) and \
-         (A["agent_end"] == B["agent_end"]):
+    elif A["agent_start"] == B["agent_start"] and \
+            A["agent_end"] == B["agent_end"]:
         return 'SWEW'
-    elif (A["agent_start"] < B["agent_start"]) and \
-         (A["agent_end"] < B["agent_end"]):
+    elif A["agent_start"] < B["agent_start"] and \
+            A["agent_end"] < B["agent_end"]:
         return 'SBEB'
-    elif (A["agent_start"] < B["agent_start"]) and \
-         (A["agent_end"] > B["agent_end"]):
+    elif A["agent_start"] < B["agent_start"] and \
+            A["agent_end"] > B["agent_end"]:
         return 'SAEB'
-    elif (A["end"] == B["agent_start"]):
+    elif A["end"] == B["agent_start"]:
         return 'ES'
 
 # TODO: Generate srps
