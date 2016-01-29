@@ -34,6 +34,13 @@
             "class": "effector2",
             "pose": "robot_view",
             "parent": 4
+        },
+        {
+            "id": 6,
+            "name": "Nao.head",
+            "class": "effector3",
+            "pose": "robot_view",
+            "parent": 0
         }
     ]
 }

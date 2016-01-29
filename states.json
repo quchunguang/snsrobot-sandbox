@@ -30,6 +30,13 @@
             "parent": 0
         },
         {
+            "id": 5,
+            "name": "PR2.head",
+            "class": "effector3",
+            "pose": "robot_view",
+            "parent": 0
+        },
+        {
             "id": 6,
             "name": "PR2.l_hand + PR2.r_hand",
             "class": "effector2",
@@ -446,77 +453,77 @@
             "B": {
                 "id": 4,
                 "args": "x,cw",
-                "innate_skill": "rotate"
+                "innate_skill": "translate"
             },
             "TA": "ES"
         },
         {
             "id": 1,
             "A": {
-                "id": 2,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 4,
-                "args": "x,cw",
-                "innate_skill": "rotate"
+                "id": 6,
+                "args": "x,pos",
+                "innate_skill": "translate"
             },
             "TA": "SWEB"
         },
         {
             "id": 2,
             "A": {
-                "id": 1,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 4,
-                "args": "x,cw",
-                "innate_skill": "rotate"
+                "id": 6,
+                "args": "z,pos",
+                "innate_skill": "translate"
             },
             "TA": "SWEW"
         },
         {
             "id": 3,
             "A": {
-                "id": 3,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 4,
-                "args": "x,cw",
-                "innate_skill": "rotate"
+                "id": 6,
+                "args": "y,pos",
+                "innate_skill": "translate"
             },
             "TA": "SAEB"
         },
         {
             "id": 4,
             "A": {
-                "id": 1,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 3,
-                "args": "x,cw",
-                "innate_skill": "rotate"
+                "id": 6,
+                "args": "z,pos",
+                "innate_skill": "translate"
             },
             "TA": "SAEW"
         },
         {
             "id": 5,
             "A": {
-                "id": 1,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
                 "id": 6,
-                "args": "x,cw",
-                "innate_skill": "rotate"
+                "args": "x,neg",
+                "innate_skill": "translate"
             },
             "TA": "SBEB"
         }
