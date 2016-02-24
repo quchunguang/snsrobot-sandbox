@@ -119,6 +119,20 @@
 </head>
 
 <body>
+
+    <h1>Known Skill Matching With States Queue From Measure</h1>
+<div id="content">
+    <table cellspacing="0">
+    <tr><th>States Obj ID</th><th>Skill Obj ID</th><th>Real Name</th><th>Class</th><th>Sk. Type</th><th>St. Pose</th><th>St. Parent</th><th>Sk. Parent</th></tr>
+{{INSERT_TBL1}}
+    </table>
+
+    <table cellspacing="0">
+    <tr><th>States ID</th><th>Operation ID</th><th>Matching Type</th></tr>
+{{INSERT_TBL2}}
+    </table>
+</div>
+
     <h1>Unknown Skill Generate Through States Queue From Measure</h1>
     <script src="//cdn.bootcss.com/d3/3.5.12/d3.min.js"></script>
     <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
@@ -151,18 +165,6 @@
     });
 </script>
 
-    <h1>Known Skill Matching With States Queue From Measure</h1>
-<div id="content">
-    <table cellspacing="0">
-    <tr><th>States Obj ID</th><th>Skill Obj ID</th><th>Real Name</th><th>Class</th><th>Sk. Type</th><th>St. Pose</th><th>St. Parent</th><th>Sk. Parent</th></tr>
-{{INSERT_TBL1}}
-    </table>
-
-    <table cellspacing="0">
-    <tr><th>States ID</th><th>Operation ID</th><th>Matching Type</th></tr>
-{{INSERT_TBL2}}
-    </table>
-</div>
 </body>
 
 </html>
