@@ -13,7 +13,6 @@ SP_instance = [{"sp_id": k,
 
 import json
 import math
-import random
 from datetime import datetime, timedelta
 
 
@@ -272,7 +271,7 @@ def mapStatesToUnknownSkill(states, skill_id):
         task = {}
         task["id"] = str(state0["id"])
         task["startDate"] = basetime + timedelta(minutes=basestates)
-        basestates += random.randint(2, 10)
+        basestates += 5
         task["endDate"] = basetime + timedelta(minutes=basestates)
         task["taskName"] = "States Queue"
         task["status"] = str(state0["id"] % 4)
