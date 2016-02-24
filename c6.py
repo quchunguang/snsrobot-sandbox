@@ -172,11 +172,11 @@ def insertTbl2(tasks, taskNames):
         print '</td></tr>',
 
 
-def renderGantt(skill):
+def renderHTML(skill):
     # generate tasks, task length between 2-10 minutes
     taskNames, tasks = genTasks(skill, 2, 10, 1)
 
-    f = open("gantt.tpl", "r")
+    f = open("c6.tpl", "r")
     for line in f:
         if line == "{{INSERT_JS_DATA}}\n":
             insertJsData(taskNames.values(), tasks)
@@ -498,7 +498,7 @@ def main():
     mapObjects(objmap, skill)
 
     # render gantt graph with the data of target skill
-    renderGantt(skill)
+    renderHTML(skill)
 
 
 if __name__ == '__main__':

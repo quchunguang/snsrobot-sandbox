@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Gantt Chart</title>
+    <title>Chapter 6</title>
     <style type="text/css">
 
     html, body, #wrapper {

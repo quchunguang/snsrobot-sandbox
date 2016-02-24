@@ -15,7 +15,6 @@ Run (Web Interface)
 Known skill mapping. This will print out a list of matching result between `sr_p`s in `states.json` and pre/post in `skills.json`.
 
 Unknown skill generate. This will generate a new skill to a json file `skills_create.json`.
-of skills.json.
 
 ### [Chapter 6](http://localhost:8000/c6.py)
 
@@ -26,12 +25,3 @@ robots with different architecture in different environments.
 
 **Note 2**
 By default, the program using `skills_create.json` (generated from `Chapter 5`) instead of `skill.json`. So You need run `Chapter 5` first before run `Chapter 6` if you never run it before.
-
-Run (CLI Interface)
--------------------
-
-1. Make sure Python v2.7 has installed. <small>On windows, make sure your directory containing `python.exe` in `PATH`.
-</small>
-2. Following program(s) can also be run directly via command line,
-
-* Chapter 5: `python c5.py`

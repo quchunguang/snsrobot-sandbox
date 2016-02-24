@@ -13,6 +13,8 @@ SP_instance = [{"sp_id": k,
 
 import json
 import math
+import random
+from datetime import datetime, timedelta
 
 
 def readJson(filename):
@@ -49,12 +51,27 @@ def mapObjects(states, skill):
         reference - Middle-wares,Tools,Supporters or sub-targets inside skill.
         effector  - Some parts of robot itself. Head, left-hand, etc.
     """
+    objs = []
     for ost in states["objects"]:
         for osk in skill["objects"]:
             if ost["class"] == osk["class"]:
                 mapObjStatusSkill[ost["id"]] = osk["id"]
 
-    print "Mapping objects:", mapObjStatusSkill
+                obj = {}
+                obj["st_obj_id"] = ost["id"]
+                obj["st_obj_name"] = ost["name"]
+                obj["st_obj_class"] = ost["class"]
+                obj["st_obj_pose"] = ost["pose"]
+                obj["st_obj_parent"] = ost["parent"]
+
+                obj["sk_obj_id"] = osk["id"]
+                obj["sk_type"] = osk["type"]
+                obj["sk_obj_parent"] = osk["parent"]
+
+                objs.append(obj)
+
+    # print "Mapping objects:", mapObjStatusSkill
+    return objs
 
 
 def mapObjId(states_obj_id):
@@ -136,12 +153,25 @@ def mapStatesToSkill(states, skill):
 
     Map task performance onto known skill primitives.
     """
+    maps = []
     for state in states["states"]:
         for op in skill["operations"]:
             if match(state, op, "pre"):
-                print state["id"], "state <=>", op["id"], "op-pre"
+                m = {}
+                m["st_id"] = state["id"]
+                m["op_id"] = op["id"]
+                m["type"] = "pre"
+                maps.append(m)
+                # print state["id"], "state <=>", op["id"], "op-pre"
+
             if match(state, op, "post"):
-                print state["id"], "state <=>", op["id"], "op-post"
+                m = {}
+                m["st_id"] = state["id"]
+                m["op_id"] = op["id"]
+                m["type"] = "post"
+                maps.append(m)
+                # print state["id"], "state <=>", op["id"], "op-post"
+    return maps
 
 
 def testKnownSkill():
@@ -150,7 +180,7 @@ def testKnownSkill():
     Using 'ijson' instead if read large JSON from file iteratively.
     """
 
-    print '------ Begin mapping states to a known skill ------'
+    # print '------ Begin mapping states to a known skill ------'
 
     # `skills` is the total memory of robot.
     skills = readJson("skills.json")
@@ -160,19 +190,20 @@ def testKnownSkill():
 
     skill = getSkillById(skills, 1)
 
-    if skill is None:
-        print "[ERROR] Target skill not exist in the skills memory!"
-        return
+    # if skill is None:
+    # print "[ERROR] Target skill not exist in the skills memory!"
+    # return
 
     # objects mapping
-    mapObjects(states, skill)
+    objs = mapObjects(states, skill)
 
     # map task performance onto known skill primitives
-    print "Matching states to pre/post op of skill, id=1 in skills."
-    mapStatesToSkill(states, skill)
+    # print "Matching states to pre/post op of skill, id=1 in skills."
+    maps = mapStatesToSkill(states, skill)
 
-    print '------ End mapping states to a known skill ------'
-    print
+    # print '------ End mapping states to a known skill ------'
+    # print
+    return objs, maps
 
 
 def mapStatesToUnknownSkill(states, skill_id):
@@ -186,6 +217,11 @@ def mapStatesToUnknownSkill(states, skill_id):
     '''
     skill = {}
     skill["id"] = skill_id
+
+    basetime = datetime.now()
+    basestates = 0
+    baseoperation = 0
+    tasks = []
 
     # Generate objects
     # {
@@ -223,12 +259,24 @@ def mapStatesToUnknownSkill(states, skill_id):
     action = {}
 
     state0 = states["states"][0]
-    action0 = states["actions"][0]
+    # action0 = states["actions"][0]
     pre_op_id = op_id
     init_crf = state0["cr_f"]
 
     for state, action in zip(states["states"][1:], states["actions"][1:]):
         # print state0["id"], state["id"]
+
+        # Simulate running time of current state.
+        # In real world, it could be measured from sensors)
+
+        task = {}
+        task["id"] = str(state0["id"])
+        task["startDate"] = basetime + timedelta(minutes=basestates)
+        basestates += random.randint(2, 10)
+        task["endDate"] = basetime + timedelta(minutes=basestates)
+        task["taskName"] = "States Queue"
+        task["status"] = str(state0["id"] % 4)
+        tasks.append(task)
 
         # posts needs to merge
         posts = genPosts(state0, state)
@@ -260,6 +308,15 @@ def mapStatesToUnknownSkill(states, skill_id):
             operation["action"] = action
             operations.append(operation)
 
+            task = {}
+            task["id"] = str(op_id)
+            task["startDate"] = basetime + timedelta(minutes=baseoperation)
+            baseoperation = basestates
+            task["endDate"] = basetime + timedelta(minutes=baseoperation)
+            task["taskName"] = "Operations Queue"
+            task["status"] = str(state0["id"] % 4)
+            tasks.append(task)
+
             goal_crf = state["cr_f"]
             post_op_id = op_id
 
@@ -285,7 +342,7 @@ def mapStatesToUnknownSkill(states, skill_id):
         "post_op_id": post_op_id
     }
 
-    return skill
+    return skill, tasks
 
 
 def genPres(state0, state, objs):
@@ -455,21 +512,22 @@ def genPosts(state0, state):
 
 
 def testUnknownSkill():
-    print '------ Begin abstract states to a new skill ------'
+    # print '------ Begin abstract states to a new skill ------'
 
     # `states` simulates the states of robot got from measure continuously.
     states = readJson("states.json")
 
     # map task performance onto known skill primitives
-    print "Mapping states to a unknown skill with id=1."
-    skill = mapStatesToUnknownSkill(states, 1)
+    # print "Mapping states to a unknown skill with id=1."
+    skill, tasks = mapStatesToUnknownSkill(states, 1)
 
     skills = []
     skills.append(skill)
     writeJson("skills_create.json", skills)
 
-    print '------ End abstract states to a new skill ------'
-    print
+    # print '------ End abstract states to a new skill ------'
+    # print
+    return tasks
 
 
 def genStates():
@@ -571,14 +629,134 @@ def createSRP(targeted_object_list,
     return sr_p, predicate_name
 
 
-def testGenerateStates():
+def insertJsData(tasks):
+    """
+    var tasks = [{
+        "startDate": new Date(2009,1,3,10,52,03),
+        "endDate": new Date(2009,1,3,11,52,03),
+        "taskName": "E Job",
+        "status": "RUNNING"
+    }, {
+        "startDate": new Date(2009,1,3,10,52,03),
+        "endDate": new Date(2009,1,3,12,52,03),
+        "taskName": "A Job",
+        "status": "RUNNING"
+    }];
+
+    var taskStatus = {
+        "SUCCEEDED": "bar",
+        "FAILED": "bar-failed",
+        "RUNNING": "bar-running",
+        "KILLED": "bar-killed"
+    };
+
+    var taskNames = ["D Job", "P Job", "E Job", "A Job", "N Job"];
+    """
+
+    taskstrings = []
+    for task in tasks:
+        s = ""
+        s += '"startDate": new Date' + \
+            str(task["startDate"].timetuple()[:6]) + ','
+        s += '"endDate": new Date' + str(task["endDate"].timetuple()[:6]) + ','
+        s += '"taskName": "' + task["taskName"] + '",'
+        s += '"status": "' + task["status"] + '"'
+        taskstrings.append(s)
+
+    if len(tasks) > 0:
+        print 'var tasks = [{'
+        print '},{'.join(taskstrings)
+        print '}];'
+    else:
+        print 'var tasks = [];'
+
+    # generate task status
+    print 'var taskStatus =',
+    taskStatus = {
+        "0": "bar0",
+        "1": "bar1",
+        "2": "bar2",
+        "3": "bar3",
+        "4": "barx0",
+        "5": "barx1",
+        "6": "barx2",
+        "7": "barx3",
+    }
+    print json.dumps(taskStatus)+';'
+
+    # generate task names
+    print 'var taskNames =',
+    taskNames = ["States Queue", "Operations Queue"]
+    print json.dumps(taskNames)+';'
+
+
+def insertTbl1(objs):
+    """
+    <tr><td>ID</td><td>A</td><td>B</td><td>TA</td></tr>
+    """
+    for obj in objs:
+        record = [str(obj["st_obj_id"]),
+                  str(obj["sk_obj_id"]),
+                  obj["st_obj_name"],
+                  obj["st_obj_class"],
+                  obj["sk_type"],
+                  obj["st_obj_pose"],
+                  str(obj["st_obj_parent"]),
+                  str(obj["sk_obj_parent"])]
+        print '<tr><td>',
+        print '</td><td>'.join(record)
+        print '</td></tr>',
+
+
+def insertTbl2(maps):
+    """
+    <tr>
+        <th>Operation ID</th>
+        <th>Operation name</th>
+        <th>innate_skill</th>
+        <th>Start Time</th>
+        <th>EndTime</th>
+        <th>Task Type</th>
+    </tr>
+
+    task["op_id"] = ID
+    task["startDate"] = basetime + timedelta(minutes=startB+lb0)
+    task["endDate"] = basetime + timedelta(minutes=startB+lb)
+    task["taskName"] = taskNames[B]
+    task["status"] = str(ID % 4 + 4)  # using color like ID % 4
+    """
+    for m in maps:
+        record = [str(m["st_id"]),
+                  str(m["op_id"]),
+                  m["type"]]
+        print '<tr><td>',
+        print '</td><td>'.join(record)
+        print '</td></tr>',
+
+
+def renderHTML():
+    """
+    Run the algorithms and render result as HTML format.
+    """
     genStates()
+    tasks = testUnknownSkill()
+    objs, maps = testKnownSkill()
+
+    f = open("c5.tpl", "r")
+    for line in f:
+        if line == "{{INSERT_JS_DATA}}\n":
+            insertJsData(tasks)
+        elif line == "{{INSERT_TBL1}}\n":
+            insertTbl1(objs)
+        elif line == "{{INSERT_TBL2}}\n":
+            insertTbl2(maps)
+        else:
+            print line,
+    f.close()
 
 
 def main():
-    testGenerateStates()
-    testKnownSkill()
-    testUnknownSkill()
+    renderHTML()
 
 
 if __name__ == '__main__':
