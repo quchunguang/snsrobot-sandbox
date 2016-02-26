@@ -206,8 +206,9 @@ def getSkillById(skills, id):
 
 
 def getStates():
-    states = readJson("states.json")  # Get from measure, return a list of sr_p
-    for state in states["states"]:
+    # Get from measure, return a list of sr_p
+    perception = readJson("perception.json")
+    for state in perception["states"]:
         yield state
 
 

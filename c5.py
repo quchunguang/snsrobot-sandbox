@@ -38,12 +38,12 @@ def writeJson(filename, obj):
 mapObjStatusSkill = {}
 
 
-def mapObjects(states, skill):
+def mapObjects(perception, skill):
     """
     Algorithm Entry - Mapping objects.
 
     Mapping objects in real world (itself) to abstracted world (its class).
-    Mapping object id from `states["objects"]` to `skill["objects"]`.
+    Mapping object id from `perception["objects"]` to `skill["objects"]`.
 
     There's three types of class in abstracted world (meta-class),
         target    - The final goal target objects.
@@ -51,7 +51,7 @@ def mapObjects(states, skill):
         effector  - Some parts of robot itself. Head, left-hand, etc.
     """
     objs = []
-    for ost in states["objects"]:
+    for ost in perception["objects"]:
         for osk in skill["objects"]:
             if ost["class"] == osk["class"]:
                 mapObjStatusSkill[ost["id"]] = osk["id"]
@@ -73,18 +73,18 @@ def mapObjects(states, skill):
     return objs
 
 
-def mapObjId(states_obj_id):
+def mapObjId(perception_obj_id):
     """
     Run mapObjects() to generate `mapObjStatusSkill` before use this function.
 
     Args:
-        states_obj_id: Object id in states.
+        perception_obj_id: Object id in perception.
 
     Returns:
         skill_obj_id: Object id in skill.
     """
     try:
-        return mapObjStatusSkill[states_obj_id]
+        return mapObjStatusSkill[perception_obj_id]
     except KeyError:
         return -1  # if not found
 
@@ -146,14 +146,14 @@ def getSkillById(skills, id):
     return curSkill
 
 
-def mapStatesToSkill(states, skill):
+def mapPerceptionToSkill(perception, skill):
     """
-    Algorithm Entry - Mapping states to pre/post op of known skill.
+    Algorithm Entry - Mapping perception to pre/post op of known skill.
 
     Map task performance onto known skill primitives.
     """
     maps = []
-    for state in states["states"]:
+    for state in perception["states"]:
         for op in skill["operations"]:
             if match(state, op, "pre"):
                 m = {}
@@ -175,17 +175,17 @@ def mapStatesToSkill(states, skill):
 
 def testKnownSkill():
     """
-    Simulates the states of robot matches the skills in memory.
+    Simulates the perception of robot matches the skills in memory.
     Using 'ijson' instead if read large JSON from file iteratively.
     """
 
-    # print '------ Begin mapping states to a known skill ------'
+    # print '------ Begin mapping perception to a known skill ------'
 
     # `skills` is the total memory of robot.
     skills = readJson("skills.json")
 
-    # `states` simulates the states of robot got from measure continuously.
-    states = readJson("states.json")
+    # `perception` simulates the perception of robot got from measure continuously.
+    perception = readJson("perception.json")
 
     skill = getSkillById(skills, 1)
 
@@ -194,31 +194,31 @@ def testKnownSkill():
     # return
 
     # objects mapping
-    objs = mapObjects(states, skill)
+    objs = mapObjects(perception, skill)
 
     # map task performance onto known skill primitives
-    # print "Matching states to pre/post op of skill, id=1 in skills."
-    maps = mapStatesToSkill(states, skill)
+    # print "Matching perception to pre/post op of skill, id=1 in skills."
+    maps = mapPerceptionToSkill(perception, skill)
 
-    # print '------ End mapping states to a known skill ------'
+    # print '------ End mapping perception to a known skill ------'
     # print
     return objs, maps
 
 
-def mapStatesToUnknownSkill(states, skill_id):
+def mapPerceptionToUnknownSkill(perception, skill_id):
     '''
     Algorithm: Offline Mapping Task Performance onto Known Skill Primitives.
 
     INPUT: state_list(Si), action_list(act)
     OUTPUT: A list of stages (its data structure is the same to operations
-        in skill.json)
+        in skills.json)
 
     '''
     skill = {}
     skill["id"] = skill_id
 
     basetime = datetime.now()
-    basestates = 0
+    baseperception = 0
     baseoperation = 0
     tasks = []
 
@@ -236,7 +236,7 @@ def mapStatesToUnknownSkill(states, skill_id):
     #     "type": "vision"
     # }
     objs = []
-    for obj in states["objects"]:
+    for obj in perception["objects"]:
         del obj["name"]
         del obj["pose"]
         obj["type"] = "vision"  # TODO
@@ -244,7 +244,7 @@ def mapStatesToUnknownSkill(states, skill_id):
     skill["objects"] = objs
 
     # Generate operations
-    if len(states["states"]) < 2:
+    if len(perception["states"]) < 2:
         print "[ERROR] At least 2 states needed to generate a skill"
         return skill
 
@@ -257,12 +257,12 @@ def mapStatesToUnknownSkill(states, skill_id):
     posts_total = []
     action = {}
 
-    state0 = states["states"][0]
-    # action0 = states["actions"][0]
+    state0 = perception["states"][0]
+    # action0 = perception["actions"][0]
     pre_op_id = op_id
     init_crf = state0["cr_f"]
 
-    for state, action in zip(states["states"][1:], states["actions"][1:]):
+    for state, action in zip(perception["states"][1:], perception["actions"][1:]):
         # print state0["id"], state["id"]
 
         # Simulate running time of current state.
@@ -270,9 +270,9 @@ def mapStatesToUnknownSkill(states, skill_id):
 
         task = {}
         task["id"] = str(state0["id"])
-        task["startDate"] = basetime + timedelta(minutes=basestates)
-        basestates += 5
-        task["endDate"] = basetime + timedelta(minutes=basestates)
+        task["startDate"] = basetime + timedelta(minutes=baseperception)
+        baseperception += 5
+        task["endDate"] = basetime + timedelta(minutes=baseperception)
         task["taskName"] = "States Queue"
         task["status"] = str(state0["id"] % 4)
         tasks.append(task)
@@ -310,7 +310,7 @@ def mapStatesToUnknownSkill(states, skill_id):
             task = {}
             task["id"] = str(op_id)
             task["startDate"] = basetime + timedelta(minutes=baseoperation)
-            baseoperation = basestates
+            baseoperation = baseperception
             task["endDate"] = basetime + timedelta(minutes=baseoperation)
             task["taskName"] = "Operations Queue"
             task["status"] = str(state0["id"] % 4)
@@ -511,20 +511,20 @@ def genPosts(state0, state):
 
 
 def testUnknownSkill():
-    # print '------ Begin abstract states to a new skill ------'
+    # print '------ Begin abstract perception to a new skill ------'
 
-    # `states` simulates the states of robot got from measure continuously.
-    states = readJson("states.json")
+    # `perception` simulates the perception of robot got from measure continuously.
+    perception = readJson("perception.json")
 
     # map task performance onto known skill primitives
-    # print "Mapping states to a unknown skill with id=1."
-    skill, tasks = mapStatesToUnknownSkill(states, 1)
+    # print "Mapping perception to a unknown skill with id=1."
+    skill, tasks = mapPerceptionToUnknownSkill(perception, 1)
 
     skills = []
     skills.append(skill)
     writeJson("skills_create.json", skills)
 
-    # print '------ End abstract states to a new skill ------'
+    # print '------ End abstract perception to a new skill ------'
     # print
     return tasks
 
@@ -589,7 +589,7 @@ def genStates():
                 "sr_p": sr_p,
                 "TA": TA})
             # action_list.append[dominant_effector, innate_skill]
-    writeJson("states_create.json", states)
+    writeJson("perception_create.json", states)
 
 
 def genTA(A, B):
