@@ -18,9 +18,8 @@ Result to see Chapter 5 [Table 2](http://localhost:8000/c5.py)
 Question 2: Liner matching states queue to then known skill.
 ----------
 
-------------------------------------------------------------
 Op. Atom|Type|List of St_id |Diff Set |len(set)
-----------------------------|-------------------------------
+----------------------------|------------------
 8       |pre |[0,1]         |  [0,1]  | 2
         |    |              |         |
 8       |post|[1,2,3]       |         |
@@ -36,8 +35,8 @@ Op. Atom|Type|List of St_id |Diff Set |len(set)
 9       |pre |[4]           |  [4]    | 1
         |    |              |         |
 9       |post|[5]           |  [5]    | 1
-------------------------------------------------------------
-                                        2*1*2*1*1*1=4
+
+Total Conditions: 2*1*2*1*1*1=4
 
 Notice: Following A, B, C are totally different combine skill!
 
