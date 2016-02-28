@@ -21,24 +21,19 @@ Question 2: Liner matching states queue to then known skill.
 Op. Atom|Type|List of St_id |Diff Set |len(set)
 --------|----|--------------|---------|--------
 8       |pre |[0,1]         |  [0,1]  | 2
-        |    |              |         |
 8       |post|[1,2,3]       |         |
 5       |pre |[0,1]         |  [1]    | 1
-        |    |              |         |
 5       |post|[2,3,4,5]     |         |
 3       |pre |[2,3]         |  [2,3]  | 2
-        |    |              |         |
 3       |post|[3]           |         |
 4       |pre |[3]           |  [3]    | 1
-        |    |              |         |
 4       |post|[4]           |         |
 9       |pre |[4]           |  [4]    | 1
-        |    |              |         |
 9       |post|[5]           |  [5]    | 1
 
 Total Conditions: 2*1*2*1*1*1=4
 
-Notice: Following A, B, C are totally different combine skill!
+Following A, B, C are totally different combine skill!
 
 ```
 A:8->5->3->4->9
@@ -56,6 +51,7 @@ matching following combine skill `A`,
 A:8->5->3->4->9
 ```
 
+```
 Algorithm 2:
 INIT SET=[0,1]
 FINISH SET=[9]
@@ -64,6 +60,7 @@ START
 0(<8>) 1(<5>) 2(<3>) 3(<4>) 4(<9>) 5(<9>) OK
 1(<8>) 2(5)->STOP for 2 not in set [1]
 END
+```
 
 Note 1: We define 2(5) as "if 2 in ADS(5)?". Witch means check if 2 in diff set between Current Op. Atom's pre and its father's post. In this case, that is the set diff of [1,2,3] (post of 8) and [0,1]  (pre of 5), that is [1]. Because 2 not in [1], STOP.
 
@@ -82,6 +79,7 @@ D:8->5->3->4->9
 
 ...->0->1->2->3->4->5->6->7->8->9->10->....
 
+```
 Algorithm 3:
 
 INIT SET=[0,1]
@@ -91,7 +89,7 @@ START
 0(<8>) 1(<5>) 2(<3>,6,7) 3(4,6,<7>) 4(4,6,2,6) ...
 1(8) 2(5) 3(3,6,7) ...
 END
-
+```
 
 Question 3+: Spread to DAG (Directed acyclic graph).
 ----------
@@ -117,6 +115,7 @@ E:[8]->[5,2]->[3]->[4,1]->[9]
 
 ...->0->1->2->3->4->5->6->7->8->9->10->....
 
+```
 Algorithm 4:
 
 INIT SET=[0,1]
@@ -126,6 +125,7 @@ START
 0(8) 1(<5>,2) 2(<3>,7,6,3) 3(4,1,<7>) 4(<4>,1,6,2) 5(9,6,2)...
 1(8) 2(5) 3(3,6,7) ...
 END
+```
 
 Note 3: [5,2] means we can chose any one in [5,2] to satisfy the whole node.
 
@@ -146,6 +146,7 @@ For combine skill `E`, any non-end node of the DAG can be look on as a sub-skill
 
 ...->0->1->2->3->4->5->6->7->8->9->10->....
 
+```
 Algorithm 5:
 
 START
@@ -158,7 +159,8 @@ for root in the set of root node of DAG:
             Out put the match.
             Ignore all children of the node and continue.
 END
+```
 
-Note: Leaf(set) means for each item in `set`, find its all leafs and calculate the union.
+Note 5: Leaf(set) means for each item in `set`, find its all leafs and calculate the union.
 
-Note: `root set` here is [8].
+Note 6: `root set` here is [8].
