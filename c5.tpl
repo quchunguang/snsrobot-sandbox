@@ -123,12 +123,12 @@
     <h1>Known Skill Matching With States Queue From Measure</h1>
 <div id="content">
     <table cellspacing="0">
-    <tr><th>States Obj ID</th><th>Skill Obj ID</th><th>Real Name</th><th>Class</th><th>Sk. Type</th><th>St. Pose</th><th>St. Parent</th><th>Sk. Parent</th></tr>
+    <tr><th>Perception ObjID</th><th>Skill ObjID</th><th>Real Name</th><th>Class</th><th>Skill Type</th><th>State Pose</th><th>State Parent</th><th>Skill Parent</th></tr>
 {{INSERT_TBL1}}
     </table>
 
     <table cellspacing="0">
-    <tr><th>States ID</th><th>Operation ID</th><th>Matching Type</th></tr>
+    <tr><th>Operation ID</th><th>Using Skill Primitive</th><th>Pre/Post</th><th>Matching</th><th>State ID</th></tr>
 {{INSERT_TBL2}}
     </table>
 </div>

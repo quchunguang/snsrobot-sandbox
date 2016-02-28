@@ -113,10 +113,11 @@ def matchItem(sr_p, sets):
 
     return mapObjId(sr_p["A"]) == sets["A"] and \
         mapObjId(sr_p["B"]) == sets["B"] and \
-        distance(x, y, z) <= float(sets["d"])
+        sr_p["d"] == sets["d"]
+    # distance(x, y, z) <= float(sets["d"])
 
 
-def match(state, op, sets):
+def matchState(state, op, sets):
     """
     Only if each item in the skill appears in the state, returns True.
     But the state can have items that not in the skill.
@@ -155,21 +156,26 @@ def mapPerceptionToSkill(perception, skill):
     maps = []
     for state in perception["states"]:
         for op in skill["operations"]:
-            if match(state, op, "pre"):
+            if matchState(state, op, "pre"):
                 m = {}
-                m["st_id"] = state["id"]
-                m["op_id"] = op["id"]
-                m["type"] = "pre"
+                m["op_id"] = str(op["id"])
+                m["op_name"] = op["name"]
+                m["type"] = "1:Pre"
+                m["st_id"] = str(state["id"])
+                m["st_crf"] = state["cr_f"]
                 maps.append(m)
                 # print state["id"], "state <=>", op["id"], "op-pre"
 
-            if match(state, op, "post"):
+            if matchState(state, op, "post"):
                 m = {}
-                m["st_id"] = state["id"]
-                m["op_id"] = op["id"]
-                m["type"] = "post"
+                m["op_id"] = str(op["id"])
+                m["op_name"] = op["name"]
+                m["type"] = "2:Post"
+                m["st_id"] = str(state["id"])
+                m["st_crf"] = state["cr_f"]
                 maps.append(m)
                 # print state["id"], "state <=>", op["id"], "op-post"
+    maps = sorted(maps, key=lambda m: (m["op_id"], m["type"]))
     return maps
 
 
@@ -184,7 +190,7 @@ def testKnownSkill():
     # `skills` is the total memory of robot.
     skills = readJson("skills.json")
 
-    # `perception` simulates the perception of robot got from measure continuously.
+    # simulates the perception of robot got from measure continuously.
     perception = readJson("perception.json")
 
     skill = getSkillById(skills, 1)
@@ -262,7 +268,8 @@ def mapPerceptionToUnknownSkill(perception, skill_id):
     pre_op_id = op_id
     init_crf = state0["cr_f"]
 
-    for state, action in zip(perception["states"][1:], perception["actions"][1:]):
+    for state, action in zip(perception["states"][1:],
+                             perception["actions"][1:]):
         # print state0["id"], state["id"]
 
         # Simulate running time of current state.
@@ -725,9 +732,7 @@ def insertTbl2(maps):
     task["status"] = str(ID % 4 + 4)  # using color like ID % 4
     """
     for m in maps:
-        record = [str(m["st_id"]),
-                  str(m["op_id"]),
-                  m["type"]]
+        record = [m["op_id"], m["op_name"], m["type"][2:], "==>", m["st_id"]]
         print '<tr><td>',
         print '</td><td>'.join(record)
         print '</td></tr>',
