@@ -19,7 +19,7 @@ Question 2: Liner matching states queue to then known skill.
 ----------
 
 Op. Atom|Type|List of St_id |Diff Set |len(set)
-----------------------------|------------------
+--------|----|--------------|---------|--------
 8       |pre |[0,1]         |  [0,1]  | 2
         |    |              |         |
 8       |post|[1,2,3]       |         |
