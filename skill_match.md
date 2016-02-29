@@ -164,3 +164,38 @@ END
 Note 5: Leaf(set) means for each item in `set`, find its all leafs and calculate the union.
 
 Note 6: `root set` here is [8].
+
+
+Question 6: Probability model matching
+----------
+
+In real world, rarely have the opportunity to match a large combine skill, because there always some little, not important differences between a states queue and a large combine skill. Apply probability model, we can accept those very mush similar but not EXACTLY EQUAL ones.
+
+```
+Probability = Covered Nodes / Total Nodes
+```
+
+For example, in following case, a given states queue `SQ` can not match the combine skill `F` exactly.
+
+```
+F:[8]->[5,2]->[3]->[4,1]->[9]
+        |-------------
+        |->[7]->[2]  |
+            |----------->[6,3]
+```
+
+Then, we try to calculate the matching probability of `F`. we matched following sub-skills of `F`,
+
+```
+G:[3]->[4,1]->[9]
+H:[7]->[2]
+   |----------->[6,3]
+```
+
+So the matching probability of `F` is,
+
+```
+Probability = Length(Union(G, H)) / Length(f) = 6 / 8 = 0.75
+```
+
+That means over 70% of probability that `SQ` matching with `F`, we may accept this matching. Or not, that depends on what threshold value you choose.
