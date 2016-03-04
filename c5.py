@@ -280,7 +280,7 @@ def mapPerceptionToUnknownSkill(perception, skill_id):
         task["startDate"] = basetime + timedelta(minutes=baseperception)
         baseperception += 5
         task["endDate"] = basetime + timedelta(minutes=baseperception)
-        task["taskName"] = "States Queue"
+        task["taskName"] = "States"
         task["status"] = str(state0["id"] % 4)
         tasks.append(task)
 
@@ -319,7 +319,7 @@ def mapPerceptionToUnknownSkill(perception, skill_id):
             task["startDate"] = basetime + timedelta(minutes=baseoperation)
             baseoperation = baseperception
             task["endDate"] = basetime + timedelta(minutes=baseoperation)
-            task["taskName"] = "Operations Queue"
+            task["taskName"] = "Operations"
             task["status"] = str(state0["id"] % 4)
             tasks.append(task)
 
@@ -692,7 +692,7 @@ def insertJsData(tasks):
 
     # generate task names
     print 'var taskNames =',
-    taskNames = ["States Queue", "Operations Queue"]
+    taskNames = ["States", "Operations"]
     print json.dumps(taskNames)+';'
 
 
@@ -700,6 +700,8 @@ def insertTbl1(objs):
     """
     <tr><td>ID</td><td>A</td><td>B</td><td>TA</td></tr>
     """
+
+    objs = sorted(objs, key=lambda obj: obj["st_obj_class"])
     for obj in objs:
         record = [str(obj["st_obj_id"]),
                   str(obj["sk_obj_id"]),

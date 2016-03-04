@@ -38,7 +38,7 @@
         },
         {
             "id": 6,
-            "name": "PR2.l_hand + PR2.r_hand",
+            "name": "PR2.hands",
             "class": "effector2",
             "pose": "robot_view",
             "parent": 4

@@ -12,8 +12,8 @@
     }
 
     .chart {
-        font-family: Arial, sans-serif;
-        font-size: 12px;
+        font-size:22px;
+        font-family:"Times New Roman";
     }
 
     .axis path,
@@ -67,6 +67,8 @@
         border-radius:5px;
         -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
         -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+        font-size:22px;
+        font-family:"Times New Roman";
     }
 
     th, td {padding:18px 28px 18px; text-align:center; }
@@ -123,7 +125,7 @@
     <h1>Known Skill Matching With States Queue From Measure</h1>
 <div id="content">
     <table cellspacing="0">
-    <tr><th>Perception ObjID</th><th>Skill ObjID</th><th>Real Name</th><th>Class</th><th>Skill Type</th><th>State Pose</th><th>State Parent</th><th>Skill Parent</th></tr>
+    <tr><th>Perception ObjID</th><th>Skill ObjID</th><th>Real Name</th><th>Class</th><th>Object Type</th><th>State Pose</th><th>State Parent</th><th>Skill Parent</th></tr>
 {{INSERT_TBL1}}
     </table>
 
@@ -134,7 +136,7 @@
 </div>
 
     <h1>Unknown Skill Generate Through States Queue From Measure</h1>
-    <script src="//cdn.bootcss.com/d3/3.5.12/d3.min.js"></script>
+    <script src="http://cdn.bootcss.com/d3/3.5.12/d3.min.js"></script>
     <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
     <script src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
     <script>

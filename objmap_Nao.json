@@ -30,7 +30,7 @@
         },
         {
             "id": 5,
-            "name": "Nao.l_hand + Nao.r_hand",
+            "name": "Nao.hands",
             "class": "effector2",
             "pose": "robot_view",
             "parent": 4

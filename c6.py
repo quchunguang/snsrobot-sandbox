@@ -118,6 +118,13 @@ def insertJsData(taskNames, tasks):
     print json.dumps(taskNames)+';'
 
 
+def getObjByID(skill, _id):
+    for obj in skill["objects"]:
+        if obj["id"] == _id:
+            return obj
+    return None
+
+
 def insertTbl1(skill, taskNames):
     """
     <tr><td>ID</td><td>A</td><td>B</td><td>TA</td></tr>
@@ -128,12 +135,41 @@ def insertTbl1(skill, taskNames):
         B = op["action"]["B"]["id"]
         TA = op["action"]["TA"]
 
+        li = [str(ID),
+              getObjByID(skill, A)["class"],
+              getObjByID(skill, A)["type"],
+              getObjByID(skill, B)["class"],
+              getObjByID(skill, B)["type"],
+              TA]
+
         print '<tr><td>',
-        print '</td><td>'.join([str(ID), taskNames[A], taskNames[B], TA])
+        print '</td><td>'.join(li)
         print '</td></tr>',
 
 
-def insertTbl2(tasks, taskNames):
+def insertTbl2(skill, taskNames):
+    """
+    <tr><td>ID</td><td>A</td><td>B</td><td>TA</td></tr>
+    """
+    for op in skill["operations"]:
+        ID = op["id"]
+        A = op["action"]["A"]["id"]
+        B = op["action"]["B"]["id"]
+        TA = op["action"]["TA"]
+
+        li = [str(ID),
+              taskNames[A],
+              getObjByID(skill, A)["type"],
+              taskNames[B],
+              getObjByID(skill, B)["type"],
+              TA]
+
+        print '<tr><td>',
+        print '</td><td>'.join(li)
+        print '</td></tr>',
+
+
+def insertTbl3(tasks, taskNames):
     """
     <tr>
         <th>Operation ID</th>
@@ -183,7 +219,9 @@ def renderHTML(skill):
         elif line == "{{INSERT_TBL1}}\n":
             insertTbl1(skill, taskNames)
         elif line == "{{INSERT_TBL2}}\n":
-            insertTbl2(tasks, taskNames)
+            insertTbl2(skill, taskNames)
+        elif line == "{{INSERT_TBL3}}\n":
+            insertTbl3(tasks, taskNames)
         else:
             print line,
     f.close()
