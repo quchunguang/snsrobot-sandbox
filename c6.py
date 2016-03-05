@@ -114,6 +114,11 @@ def insertJsData(taskNames, tasks):
     print json.dumps(taskStatus)+';'
 
     # generate task names
+    # TODO: delete task names with '.' temporarily.
+    # Best solution is add meta-type segment with value object/target/effector.
+    for name in taskNames[:]:
+        if "." not in name:
+            taskNames.remove(name)
     print 'var taskNames =',
     print json.dumps(taskNames)+';'
 

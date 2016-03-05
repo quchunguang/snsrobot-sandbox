@@ -10,7 +10,6 @@
         height: 100%;
         margin: 0px;
     }
-
     .chart {
         font-size:22px;
         font-family:"Times New Roman";
@@ -121,6 +120,20 @@
 </head>
 
 <body>
+<div id="content">
+
+    <table cellspacing="0">
+    <tr><th>Operation ID</th><th>Class A</th><th>Type A</th><th>Class B</th><th>Type B</th><th>TA</th></tr>
+{{INSERT_TBL1}}
+    </table>
+
+    <table cellspacing="0">
+    <tr><th>Operation ID</th><th>Object A</th><th>Type A</th><th>Object B</th><th>Type B</th><th>TA</th></tr>
+{{INSERT_TBL2}}
+    </table>
+</div>
+
+<div id="gantt">
     <script src="http://cdn.bootcss.com/d3/3.5.12/d3.min.js"></script>
     <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
     <script src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
@@ -151,18 +164,9 @@
             $("table td:last-child, table th:last-child").addClass("last");
     });
 </script>
+</div>
 
 <div id="content">
-    <table cellspacing="0">
-    <tr><th>Operation ID</th><th>Class A</th><th>Type A</th><th>Class B</th><th>Type B</th><th>TA</th></tr>
-{{INSERT_TBL1}}
-    </table>
-
-    <table cellspacing="0">
-    <tr><th>Operation ID</th><th>Object A</th><th>Type A</th><th>Object B</th><th>Type B</th><th>TA</th></tr>
-{{INSERT_TBL2}}
-    </table>
-
     <table cellspacing="0">
     <tr><th>Op. ID</th><th>Obj. Name</th><th>Innate Skill</th><th>Arg.</th><th>Start Time</th><th>End Time</th><th>Task Type</th></tr>
 {{INSERT_TBL3}}

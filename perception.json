@@ -6,42 +6,48 @@
             "name": "Book_A",
             "class": "target1",
             "pose": "robot_view",
-            "parent": 0
+            "parent": 0,
+            "type": "vision"
         },
         {
             "id": 2,
             "name": "Table",
             "class": "reference1",
             "pose": "robot_view",
-            "parent": 0
+            "parent": 0,
+            "type": "vision"
         },
         {
             "id": 3,
             "name": "Book_B",
             "class": "target2",
             "pose": "robot_view",
-            "parent": 0
+            "parent": 0,
+            "type": "vision"
         },
         {
             "id": 4,
             "name": "PR2.Torso",
             "class": "effector1",
             "pose": "robot_view",
-            "parent": 0
+            "parent": 0,
+            "type": ""
         },
         {
             "id": 5,
             "name": "PR2.head",
             "class": "effector3",
             "pose": "robot_view",
-            "parent": 0
+            "parent": 0,
+            "type": "vision"
         },
         {
             "id": 6,
             "name": "PR2.hands",
             "class": "effector2",
             "pose": "robot_view",
-            "parent": 4
+            "parent": 4,
+            "type": "cr_f:object.position_changed, sr_p:attach"
         }
     ],
     "states": [
@@ -446,12 +452,12 @@
         {
             "id": 0,
             "A": {
-                "id": 1,
+                "id": 5,
                 "args": "x,cw",
                 "innate_skill": "rotate"
             },
             "B": {
-                "id": 4,
+                "id": 6,
                 "args": "x,cw",
                 "innate_skill": "translate"
             },

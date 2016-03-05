@@ -43,7 +43,7 @@
             {
                 "class": "effector2",
                 "id": 6,
-                "parent": 4,
+                "parent": 3,
                 "type": "cr_f:object.position_changed, sr_p:attach"
             }
         ],

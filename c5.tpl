@@ -125,7 +125,7 @@
     <h1>Known Skill Matching With States Queue From Measure</h1>
 <div id="content">
     <table cellspacing="0">
-    <tr><th>Perception ObjID</th><th>Skill ObjID</th><th>Real Name</th><th>Class</th><th>Object Type</th><th>State Pose</th><th>State Parent</th><th>Skill Parent</th></tr>
+    <tr><th>ObjID (Perception)</th><th>ObjID (Skill)</th><th>Real Name (Perception)</th><th>Object Class (Skill)</th><th>Object Type <br/>(Skill)</th><th>Pose Coordination (Perception)</th><th>Parent ObjID (Perception)</th><th>Parent ObjID (Skill)</th></tr>
 {{INSERT_TBL1}}
     </table>
 

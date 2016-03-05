@@ -245,7 +245,7 @@ def mapPerceptionToUnknownSkill(perception, skill_id):
     for obj in perception["objects"]:
         del obj["name"]
         del obj["pose"]
-        obj["type"] = "vision"  # TODO
+        # obj["type"] = "vision"  # TODO
         objs.append(obj)
     skill["objects"] = objs
 
