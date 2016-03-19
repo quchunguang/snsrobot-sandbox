@@ -1,7 +1,14 @@
 Known skill matching
 ====================
 
-Question 1: Mapping pre/post of the Ops of a known skill to states queue.
+Notation Conventions
+----------
+
+* s1, s2, ... State from measure.
+* 1, 2, ...   Atom skill.
+* A, B, ...   Combine skill.
+
+Level 1: Mapping pre/post of the Ops of a known skill to states queue.
 ----------
 
 The known skill `A` using Skill Primitive queue:
@@ -10,30 +17,34 @@ A:8->5->3->4->9
 
 Now we trying to mapping its pre/post to a states queue:
 
-0->1->2->3->4->5
+s0->s1->s2->s3->s4->s5
 
 Result to see Chapter 5 [Table 2](http://localhost:8000/c5.py)
 
 
-Question 2: Liner matching states queue to then known skill.
+Level 2: Liner matching states queue to then known skill.
 ----------
 
-Op. Atom|Type|List of St_id |Diff Set |len(set)
---------|----|--------------|---------|--------
-8       |pre |[0,1]         |  [0,1]  | 2
-8       |post|[1,2,3]       |         |
-5       |pre |[0,1]         |  [1]    | 1
-5       |post|[2,3,4,5]     |         |
-3       |pre |[2,3]         |  [2,3]  | 2
-3       |post|[3]           |         |
-4       |pre |[3]           |  [3]    | 1
-4       |post|[4]           |         |
-9       |pre |[4]           |  [4]    | 1
-9       |post|[5]           |  [5]    | 1
+Atom Sk.|Type| List of St_id |Diff Above |len(set)
+--------|----|---------------|-----------|--------
+~       |post| Universal Set |           |
+8       |pre | [s0,s1]       | [s0,s1]   | 2
+8       |post| [s1,s2,s3]    |           |
+5       |pre | [s0,s1]       | [s1]      | 1
+5       |post| [s2,s3,s4,s5] |           |
+3       |pre | [s2,s3]       | [s2,s3]   | 2
+3       |post| [s3]          |           |
+4       |pre | [s3]          | [s3]      | 1
+4       |post| [s4]          |           |
+9       |pre | [s4]          | [s4]      | 1
+9       |post| [s5]          |           |
+~       |pre | Universal Set | [s5]      | 1
 
 Total Conditions: 2*1*2*1*1*1=4
 
 Following A, B, C are totally different combine skill!
+
+Here, `[s0,s1]` is the initialize state set.
 
 ```
 A:8->5->3->4->9
@@ -43,7 +54,7 @@ C:8->5->6->3->4->9
 
 Then we try to see if the queue of states,
 
-...->0->1->2->3->4->5->6->7->8->9->10->....
+...->s0->s1->s2->s3->s4->s5->s6->s7->s8->s9->s10->....
 
 matching following combine skill `A`,
 
@@ -53,12 +64,12 @@ A:8->5->3->4->9
 
 ```
 Algorithm 2:
-INIT SET=[0,1]
+INIT SET=[s0,s1]
 FINISH SET=[9]
 
 START
-0(<8>) 1(<5>) 2(<3>) 3(<4>) 4(<9>) 5(<9>) OK
-1(<8>) 2(5)->STOP for 2 not in set [1]
+s0(<8>) s1(<5>) s2(<3>) s3(<4>) s4(<9>) s5(<9>) OK
+s1(<8>) s2(5)->STOP for s2 not in set [1]
 END
 ```
 
@@ -67,7 +78,7 @@ Note 1: We define 2(5) as "if 2 in ADS(5)?". Witch means check if 2 in diff set 
 Note 2: In the same way, 2(<5>,3,6) means "if 2 in ADS(5)?" or "if 2 in ADS(3)?" or "if 2 in ADS(6)?". If some of the answers is true, we can choose one of it, with is marked with <>. If neither of answer is true, STOP.
 
 
-Question 3: Spread to Tree.
+Level 3: Spread to Tree.
 ----------
 
 ```
@@ -77,24 +88,24 @@ D:8->5->3->4->9
         |->6
 ```
 
-...->0->1->2->3->4->5->6->7->8->9->10->....
+...->s0->s1->s2->s3->s4->s5->s6->s7->s8->s9->s10->....
 
 ```
 Algorithm 3:
 
-INIT SET=[0,1]
+INIT SET=[s0,s1]
 FINISH SET=[9,2,6]
 
 START
-0(<8>) 1(<5>) 2(<3>,6,7) 3(4,6,<7>) 4(4,6,2,6) ...
-1(8) 2(5) 3(3,6,7) ...
+s0(<8>) s1(<5>) s2(<3>,6,7) s3(4,6,<7>) s4(4,6,2,6) ...
+s1(8) s2(5) s3(3,6,7) ...
 END
 ```
 
-Question 3+: Spread to DAG (Directed acyclic graph).
+Level 3+: Spread to DAG (Directed acyclic graph).
 ----------
 
-等价于Question 3,
+等价于Level 3,
 
 ```
 D:8->5->3->4->9
@@ -103,7 +114,7 @@ D:8->5->3->4->9
         |------->6
 ```
 
-Question 4: Spread to DAG with list-nodes.
+Level 4: Spread to DAG with list-nodes.
 ----------
 
 ```
@@ -113,26 +124,26 @@ E:[8]->[5,2]->[3]->[4,1]->[9]
             |----------->[6,3]
 ```
 
-...->0->1->2->3->4->5->6->7->8->9->10->....
+...->s0->s1->s2->s3->s4->s5->s6->s7->s8->s9->s10->....
 
 ```
 Algorithm 4:
 
-INIT SET=[0,1]
+INIT SET=[s0,s1]
 FINISH SET=[9,2,6,3]
 
 START
-0(<8>) 1(<5>,2) 2(<3>,7,6,3) 3(4,1,<7>) 4(<4>,1,2) 5(9,2)...
-1(8) 2(5) 3(3,6,7) ...
+s0(<8>) s1(<5>,2) s2(<3>,7,6,3) s3(4,1,<7>) s4(<4>,1,2) s5(9,2)...
+s1(8) s2(5) s3(3,6,7) ...
 END
 ```
 
 Note 3: [5,2] means we can chose any one in [5,2] to satisfy the whole node.
 
-Note 4: in `2(<3>,7,6,3)`, [3] finished, so [4,1] added, [7] remain. **[6,3]** has two fathers, namely [5,2] and [7]. Because 3 has been chosen, node [6,3] has been totally satisfied. So next round remains question 3(4,1,7). 
+Note 4: in `2(<3>,7,6,3)`, [3] finished, so [4,1] added, [7] remain. **[6,3]** has two fathers, namely [5,2] and [7]. Because 3 has been chosen, node [6,3] has been totally satisfied. So next round remains question 3(4,1,7).
 
 
-Question 5: Match sub-skill of a known combine skill.
+Level 5: Match sub-skill of a known combine skill.
 ----------
 
 ```
@@ -144,7 +155,7 @@ E:[8]->[5,2]->[3]->[4,1]->[9]
 
 For combine skill `E`, any non-end node of the DAG can be look on as a sub-skill. Of cause, a end node must be any one of a `Skill Primitive`, a atom in the alternate list.
 
-...->0->1->2->3->4->5->6->7->8->9->10->....
+...->s0->s1->s2->s3->s4->s5->s6->s7->s8->s9->s10->....
 
 ```
 Algorithm 5:
@@ -166,10 +177,10 @@ Note 5: Leaf(set) means for each item in `set`, find its all leafs and calculate
 Note 6: `root set` here is [8].
 
 
-Question 6: Probability model matching
+Level 6: Probability model matching
 ----------
 
-In real world, rarely have the opportunity to match a large combine skill, because there always some little, not important differences between a states queue and a large combine skill. Apply probability model, we can accept those very mush similar but not EXACTLY EQUAL ones.
+In the real world, rarely have the opportunity to match a large combine skill, because there always some little, not important differences between a states queue and a large combine skill. Apply probability model, we can accept those very mush similar but not EXACTLY EQUAL ones.
 
 ```
 Probability = Covered Nodes / Total Nodes
@@ -199,3 +210,23 @@ Probability = Length(Union(G, H)) / Length(f) = 6 / 8 = 0.75
 ```
 
 That means over 70% of probability that `SQ` matching with `F`, we may accept this matching. Or not, that depends on what threshold value you choose.
+
+
+Level 7: Hidden Markov Model
+----------
+
+
+Level 7: Hidden Markov Model
+----------
+
+
+Level 7: Hidden Markov Model
+----------
+
+
+Level 7: Hidden Markov Model
+----------
+
+
+Level 7: Hidden Markov Model
+----------
