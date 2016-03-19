@@ -129,7 +129,7 @@ END
 
 Note 3: [5,2] means we can chose any one in [5,2] to satisfy the whole node.
 
-Note 4: in `2(<3>,7,6,3)`, [3] finished, so [4,1] added, [7] remain. **[6,3]** has two father [5,2] and [7]. Because 3 is choosing, node [6,3] totally satisfied. So next round remains question 3(4,1,7).
+Note 4: in `2(<3>,7,6,3)`, [3] finished, so [4,1] added, [7] remain. **[6,3]** has two fathers, namely [5,2] and [7]. Because 3 has been chosen, node [6,3] has been totally satisfied. So next round remains question 3(4,1,7). 
 
 
 Question 5: Match sub-skill of a known combine skill.
