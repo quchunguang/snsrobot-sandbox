@@ -97,7 +97,7 @@ Question 3+: Spread to DAG (Directed acyclic graph).
 等价于Question 3,
 
 ```
-E:8->5->3->4->9
+D:8->5->3->4->9
      |---------
      |->7->2  |
         |------->6
