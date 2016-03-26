@@ -11,6 +11,8 @@ Notation Conventions
 Level 1: Mapping pre/post of the Ops of a known skill to states queue.
 ----------
 
+From here on, we talk about `Layer 3` of our framework.
+
 The known skill `A` using Skill Primitive queue:
 
 A:8->5->3->4->9
@@ -161,7 +163,7 @@ For combine skill `E`, any non-end node of the DAG can be look on as a sub-skill
 Algorithm 5:
 
 START
-for root in the set of root node of DAG:
+for root in `root list` of DAG:
     for node in all non-end node in the children of root:
         INIT SET=ADS(node)
         FINISH SET=Leaf(ADS(node))
@@ -174,10 +176,10 @@ END
 
 Note 5: Leaf(set) means for each item in `set`, find its all leafs and calculate the union.
 
-Note 6: `root set` here is [8].
+Note 6: `root list` here is [8].
 
 
-Level 6: Probability model matching
+Level 6: Matching probability model
 ----------
 
 In the real world, rarely have the opportunity to match a large combine skill, because there always some little, not important differences between a states queue and a large combine skill. Apply probability model, we can accept those very mush similar but not EXACTLY EQUAL ones.
@@ -195,7 +197,7 @@ F:[8]->[5,2]->[3]->[4,1]->[9]
             |----------->[6,3]
 ```
 
-Then, we try to calculate the matching probability of `F`. we matched following sub-skills of `F`,
+Then, we try to calculate the matching probability of `F`. With <Algorithm 5> `SQ` matching following sub-skills of `F`,
 
 ```
 G:[3]->[4,1]->[9]
@@ -206,27 +208,36 @@ H:[7]->[2]
 So the matching probability of `F` is,
 
 ```
-Probability = Length(Union(G, H)) / Length(f) = 6 / 8 = 0.75
+Probability = Length(Union(G, H)) / Length(F) = 6 / 8 = 0.75
 ```
 
 That means over 70% of probability that `SQ` matching with `F`, we may accept this matching. Or not, that depends on what threshold value you choose.
 
 
-Level 7: Hidden Markov Model
+Level 7: Add atom skill from scratch
 ----------
 
+From very small amount of simple pre-defined atom skills, we can built a method to allow robots abstract new skills from observe (states queues of above) and induction (calculate sub-skills with highly matching probability, see `Level 6`). That's not enough. Robots also need to know how to add new skill as atom skills as well. Next step (`Level 9`), we can remove all the `known skills` from human being and let robot build its brain from zero.
 
-Level 7: Hidden Markov Model
+TODO: Add atom skill from scratch.
+
+
+Level 8: Total skill matching
 ----------
 
+From here on, we talk about `Layer 4` of our framework.
 
-Level 7: Hidden Markov Model
+Whatever in the single brain of robot or in the whole world of robots that connects together (ie. SNS-Robot), there's lots of skills for searching and matching again and again. How to find out the matching skill with highly probability in most efficiency way? [Level 5](#Level 5) tell us a skill can be look as sub-skill of some other skill. In the other way, All the skills can be look as sub-skill of one huge skill.
+
+The goodness of using one huge skill instead of lots of single ones is obversely about efficiency. Reappear parts  are ignored and optional operations are combine in the node list, that makes the total skills size much smaller and then makes search and match much faster.
+
+
+Level 9: Matching probability model improved with ANN
 ----------
 
+With Artificial Neural Networks (ANN), we built a matching evaluation network. This much improved the [Matching probability model](Level 5).
 
-Level 7: Hidden Markov Model
+
+Level 10: Hidden Markov Model (HMM)
 ----------
 
-
-Level 7: Hidden Markov Model
-----------
