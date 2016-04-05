@@ -1,0 +1,622 @@
+[
+    {
+        "goal_feature": {
+            "cr_f": "0000",
+            "post_op_id": 3
+        },
+        "id": 1,
+        "init_feature": {
+            "cr_f": "0000",
+            "pre_op_id": 1
+        },
+        "objects": [
+            {
+                "class": "target1",
+                "id": 2,
+                "parent": 0,
+                "type": "vision"
+            },
+            {
+                "class": "reference1",
+                "id": 1,
+                "parent": 0,
+                "type": "vision"
+            },
+            {
+                "class": "target2",
+                "id": 4,
+                "parent": 0,
+                "type": "vision"
+            },
+            {
+                "class": "effector1",
+                "id": 3,
+                "parent": 0,
+                "type": ""
+            },
+            {
+                "class": "effector3",
+                "id": 5,
+                "parent": 0,
+                "type": "vision"
+            },
+            {
+                "class": "effector2",
+                "id": 6,
+                "parent": 3,
+                "type": "cr_f:object.position_changed, sr_p:attach"
+            }
+        ],
+        "operations": [
+            {
+                "action": {
+                    "A": {
+                        "args": "x,cw",
+                        "id": 5,
+                        "innate_skill": "rotate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "B": {
+                        "args": "x,pos",
+                        "id": 6,
+                        "innate_skill": "translate",
+                        "post": [
+                            {
+                                "A": 6,
+                                "B": 2,
+                                "d": "|U|",
+                                "p_n": "concide",
+                                "type": "new"
+                            }
+                        ],
+                        "pre": []
+                    },
+                    "TA": "SWEB",
+                    "id": 1
+                },
+                "id": 1,
+                "name": "8: Grasp Object",
+                "post": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "d": "|U|",
+                        "p_n": "concide",
+                        "type": "new"
+                    }
+                ],
+                "pre": [
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "d": "|U|",
+                        "p_n": "above",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "d": ">|U|",
+                        "p_n": "left",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "d": "<=robot_W.reachable_distance",
+                        "p_n": "front",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9
+                    }
+                ]
+            },
+            {
+                "action": {
+                    "A": {
+                        "args": "x,cw",
+                        "id": 5,
+                        "innate_skill": "rotate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "B": {
+                        "args": "z,pos",
+                        "id": 6,
+                        "innate_skill": "translate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "TA": "SWEW",
+                    "id": 2
+                },
+                "id": 2,
+                "name": "5: Lift an Object",
+                "post": [
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "d": ">|U|",
+                        "p_n": "above",
+                        "type": "d~"
+                    }
+                ],
+                "pre": [
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "d": "|U|",
+                        "p_n": "above",
+                        "type": "d~"
+                    }
+                ]
+            },
+            {
+                "action": {
+                    "A": {
+                        "args": "x,cw",
+                        "id": 5,
+                        "innate_skill": "rotate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "B": {
+                        "args": "z,pos",
+                        "id": 6,
+                        "innate_skill": "translate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "TA": "SWEW",
+                    "id": 2
+                },
+                "id": 3,
+                "name": "3: MoveTo an Object",
+                "post": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "concide",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 6,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ],
+                "pre": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "concide",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "left",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ]
+            },
+            {
+                "action": {
+                    "A": {
+                        "args": "x,cw",
+                        "id": 5,
+                        "innate_skill": "rotate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "B": {
+                        "args": "z,pos",
+                        "id": 6,
+                        "innate_skill": "translate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "TA": "SWEW",
+                    "id": 2
+                },
+                "id": 4,
+                "name": "4: Put a target on an object",
+                "post": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ],
+                "pre": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "concide",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 6,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ]
+            },
+            {
+                "action": {
+                    "A": {
+                        "args": "x,cw",
+                        "id": 5,
+                        "innate_skill": "rotate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "B": {
+                        "args": "z,pos",
+                        "id": 6,
+                        "innate_skill": "translate",
+                        "post": [],
+                        "pre": []
+                    },
+                    "TA": "SWEW",
+                    "id": 2
+                },
+                "id": 5,
+                "name": "9: Withdraw Hand",
+                "post": [
+                    {
+                        "A": 2,
+                        "B": 6,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 6,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ],
+                "pre": [
+                    {
+                        "A": 6,
+                        "B": 2,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 4,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": ">|U|"
+                    },
+                    {
+                        "A": 2,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front",
+                        "d": "<=robot_W.reachable_distance"
+                    },
+                    {
+                        "A": 4,
+                        "B": 1,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "above",
+                        "d": "|U|"
+                    },
+                    {
+                        "A": 4,
+                        "B": 3,
+                        "coordinate": "robot_view",
+                        "x": 0,
+                        "y": 0,
+                        "z": 9,
+                        "p_n": "front&right",
+                        "d": "<=robot_W.reachable_distance"
+                    }
+                ]
+            }
+        ]
+    }
+]

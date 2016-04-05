@@ -1,0 +1,537 @@
+{
+    "id": 1,
+    "objects": [
+        {
+            "id": 1,
+            "name": "Book_A",
+            "class": "target1",
+            "pose": "robot_view",
+            "parent": 0,
+            "type": "vision"
+        },
+        {
+            "id": 2,
+            "name": "Table",
+            "class": "reference1",
+            "pose": "robot_view",
+            "parent": 0,
+            "type": "vision"
+        },
+        {
+            "id": 3,
+            "name": "Book_B",
+            "class": "target2",
+            "pose": "robot_view",
+            "parent": 0,
+            "type": "vision"
+        },
+        {
+            "id": 4,
+            "name": "PR2.Torso",
+            "class": "effector1",
+            "pose": "robot_view",
+            "parent": 0,
+            "type": ""
+        },
+        {
+            "id": 5,
+            "name": "PR2.head",
+            "class": "effector3",
+            "pose": "robot_view",
+            "parent": 0,
+            "type": "vision"
+        },
+        {
+            "id": 6,
+            "name": "PR2.hands",
+            "class": "effector2",
+            "pose": "robot_view",
+            "parent": 4,
+            "type": "cr_f:object.position_changed, sr_p:attach"
+        }
+    ],
+    "states": [
+        {
+            "id": 0,
+            "cr_f": "0000",
+            "sr_p": [
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "left",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "cr_f": "0100",
+            "sr_p": [
+                {
+                    "A": 6,
+                    "B": 1,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "concide",
+                    "d": "|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "left",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "cr_f": "0010",
+            "sr_p": [
+                {
+                    "A": 6,
+                    "B": 1,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "concide",
+                    "d": "|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "left",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "cr_f": "0010",
+            "sr_p": [
+                {
+                    "A": 6,
+                    "B": 1,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "concide",
+                    "d": "|U|"
+                },
+                {
+                    "A": 6,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "cr_f": "0010",
+            "sr_p": [
+                {
+                    "A": 6,
+                    "B": 1,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 3,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "cr_f": "0000",
+            "sr_p": [
+                {
+                    "A": 1,
+                    "B": 6,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 1,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": "<=robot_W.reachable_distance"
+                },
+                {
+                    "A": 3,
+                    "B": 2,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "above",
+                    "d": "|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 6,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front",
+                    "d": ">|U|"
+                },
+                {
+                    "A": 3,
+                    "B": 4,
+                    "coordinate": "robot_view",
+                    "x": 0,
+                    "y": 0,
+                    "z": 9,
+                    "p_n": "front&right",
+                    "d": "<=robot_W.reachable_distance"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "id": 0,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "x,cw",
+                "innate_skill": "translate"
+            },
+            "TA": "ES"
+        },
+        {
+            "id": 1,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "x,pos",
+                "innate_skill": "translate"
+            },
+            "TA": "SWEB"
+        },
+        {
+            "id": 2,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "z,pos",
+                "innate_skill": "translate"
+            },
+            "TA": "SWEW"
+        },
+        {
+            "id": 3,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "y,pos",
+                "innate_skill": "translate"
+            },
+            "TA": "SAEB"
+        },
+        {
+            "id": 4,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "z,pos",
+                "innate_skill": "translate"
+            },
+            "TA": "SAEW"
+        },
+        {
+            "id": 5,
+            "A": {
+                "id": 5,
+                "args": "x,cw",
+                "innate_skill": "rotate"
+            },
+            "B": {
+                "id": 6,
+                "args": "x,neg",
+                "innate_skill": "translate"
+            },
+            "TA": "SBEB"
+        }
+    ]
+}

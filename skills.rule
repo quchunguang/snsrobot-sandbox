@@ -1,0 +1,29 @@
+skills       ::= list(skill)
+skill        ::= skill.id + objects + init_feature + goal_feature + operations
+objects      ::= list(object)
+object       ::= object.id + class + object.type + parent
+init_feature ::= cr_f + pre_op_id
+pre_op_id    ::= operation.id
+goal_feature ::= cr_f + post_op_id
+post_op_id   ::= operation.id
+operations   ::= list(operation)
+operation    ::= operation.id + name + pre + action + post
+pre          ::= list(sr_p)
+action       ::= A + B + TA + name + action.type
+post         ::= list(sr_p)
+A            ::= A.id + args + innate_skill + pre + post
+B            ::= B.id + args + innate_skill + pre + post
+sr_p         ::= sr_p.A + sr_p.B + p_n + d
+
+A.id, B.id, sr_p.A, sr_p.B ::= object.id
+
+skill.id     ::= <NUMBER>  ;; TODO: about this end point here
+object.id    ::= <NUMBER>  ;; TODO: about this end point here
+object.type  ::= <STRING>  ;; TODO: about this end point here
+class        ::= <STRING>  ;; TODO: about this end point here
+parent       ::= <NUMBER>  ;; TODO: about this end point here
+operation.id ::= <NUMBER>  ;; TODO: about this end point here
+name         ::= <NUMBER>  ;; TODO: about this end point here
+action.type  ::= <STRING>  ;; TODO: about this end point here
+p_n          ::= <STRING>  ;; TODO: about this end point here
+d            ::= <STRING>  ;; TODO: about this end point here

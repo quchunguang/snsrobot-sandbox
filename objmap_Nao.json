@@ -1,0 +1,46 @@
+{
+    "objects": [
+        {
+            "id": 1,
+            "name": "Box_A",
+            "class": "target1",
+            "pose": "robot_view",
+            "parent": 0
+        },
+        {
+            "id": 2,
+            "name": "Bed",
+            "class": "reference1",
+            "pose": "robot_view",
+            "parent": 0
+        },
+        {
+            "id": 3,
+            "name": "Box_B",
+            "class": "target2",
+            "pose": "robot_view",
+            "parent": 0
+        },
+        {
+            "id": 4,
+            "name": "Nao.Torso",
+            "class": "effector1",
+            "pose": "robot_view",
+            "parent": 0
+        },
+        {
+            "id": 5,
+            "name": "Nao.hands",
+            "class": "effector2",
+            "pose": "robot_view",
+            "parent": 4
+        },
+        {
+            "id": 6,
+            "name": "Nao.head",
+            "class": "effector3",
+            "pose": "robot_view",
+            "parent": 0
+        }
+    ]
+}
