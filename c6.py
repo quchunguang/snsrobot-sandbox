@@ -111,7 +111,7 @@ def insertJsData(taskNames, tasks):
         "6": "barx2",
         "7": "barx3",
     }
-    print json.dumps(taskStatus)+';'
+    print json.dumps(taskStatus) + ';'
 
     # generate task names
     # TODO: delete task names with '.' temporarily.
@@ -120,7 +120,7 @@ def insertJsData(taskNames, tasks):
         if "." not in name:
             taskNames.remove(name)
     print 'var taskNames =',
-    print json.dumps(taskNames)+';'
+    print json.dumps(taskNames) + ';'
 
 
 def getObjByID(skill, _id):
@@ -298,7 +298,7 @@ def transCoordinate(coordinate, x, y, z):
 
 
 def distance(x, y, z):
-    return math.sqrt(x*x + y*y + z*z)
+    return math.sqrt(x * x + y * y + z * z)
 
 
 def matchItem(sr_p, sets):
@@ -440,7 +440,7 @@ def genTasks(skill, minLen, maxLen, minDelay):
             la = max([la, minDelay + minDelay])
             lb = max([la, lb])
 
-            baseline = max([plan[A], plan[B]-minDelay])
+            baseline = max([plan[A], plan[B] - minDelay])
             startA = baseline
             startB = startA + minDelay
 
@@ -482,7 +482,7 @@ def genTasks(skill, minLen, maxLen, minDelay):
         task = {}
         task["op_id"] = ID
         task["startDate"] = basetime + timedelta(minutes=startA)
-        task["endDate"] = basetime + timedelta(minutes=startA+la0)
+        task["endDate"] = basetime + timedelta(minutes=startA + la0)
         task["taskName"] = taskNames[A]
         task["status"] = str(ID % 4)
         task["innate_skill"] = ISA
@@ -493,8 +493,8 @@ def genTasks(skill, minLen, maxLen, minDelay):
         if la > la0:
             task = {}
             task["op_id"] = ID
-            task["startDate"] = basetime + timedelta(minutes=startA+la0)
-            task["endDate"] = basetime + timedelta(minutes=startA+la)
+            task["startDate"] = basetime + timedelta(minutes=startA + la0)
+            task["endDate"] = basetime + timedelta(minutes=startA + la)
             task["taskName"] = taskNames[A]
             task["status"] = str(ID % 4 + 4)  # using color like ID % 4
             task["innate_skill"] = ISA
@@ -505,7 +505,7 @@ def genTasks(skill, minLen, maxLen, minDelay):
         task = {}
         task["op_id"] = ID
         task["startDate"] = basetime + timedelta(minutes=startB)
-        task["endDate"] = basetime + timedelta(minutes=startB+lb0)
+        task["endDate"] = basetime + timedelta(minutes=startB + lb0)
         task["taskName"] = taskNames[B]
         task["status"] = str(ID % 4)
         task["innate_skill"] = ISB
@@ -516,8 +516,8 @@ def genTasks(skill, minLen, maxLen, minDelay):
         if lb > lb0:
             task = {}
             task["op_id"] = ID
-            task["startDate"] = basetime + timedelta(minutes=startB+lb0)
-            task["endDate"] = basetime + timedelta(minutes=startB+lb)
+            task["startDate"] = basetime + timedelta(minutes=startB + lb0)
+            task["endDate"] = basetime + timedelta(minutes=startB + lb)
             task["taskName"] = taskNames[B]
             task["status"] = str(ID % 4 + 4)  # using color like ID % 4
             task["innate_skill"] = ISB

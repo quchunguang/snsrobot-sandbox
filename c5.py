@@ -520,7 +520,8 @@ def genPosts(state0, state):
 def testUnknownSkill():
     # print '------ Begin abstract perception to a new skill ------'
 
-    # `perception` simulates the perception of robot got from measure continuously.
+    # `perception` simulates the perception of robot got from measure
+    #  continuously.
     perception = readJson("perception.json")
 
     # map task performance onto known skill primitives
@@ -688,12 +689,12 @@ def insertJsData(tasks):
         "6": "barx2",
         "7": "barx3",
     }
-    print json.dumps(taskStatus)+';'
+    print json.dumps(taskStatus) + ';'
 
     # generate task names
     print 'var taskNames =',
     taskNames = ["States", "Operations"]
-    print json.dumps(taskNames)+';'
+    print json.dumps(taskNames) + ';'
 
 
 def insertTbl1(objs):
