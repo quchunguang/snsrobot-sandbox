@@ -24,7 +24,7 @@ s0->s1->s2->s3->s4->s5
 Result to see Chapter 5 [Table 2](http://localhost:8000/c5.py)
 
 
-Level 2: Liner matching states queue to then known skill.
+Level 2: Liner matching states queue to the known skill.
 ----------
 
 Atom Sk.|Type| List of St_id |Diff Above |len(set)
@@ -54,6 +54,8 @@ B:8->3->4->9
 C:8->5->6->3->4->9
 ```
 
+------------------------------------------------------------
+
 Then we try to see if the queue of states,
 
 ...->s0->s1->s2->s3->s4->s5->s6->s7->s8->s9->s10->....
@@ -75,9 +77,9 @@ s1(<8>) s2(5)->STOP for s2 not in set [1]
 END
 ```
 
-Note 1: We define 2(5) as "if 2 in ADS(5)?". Witch means check if 2 in diff set between Current Op. Atom's pre and its father's post. In this case, that is the set diff of [1,2,3] (post of 8) and [0,1]  (pre of 5), that is [1]. Because 2 not in [1], STOP.
+Note 1: We define s2(5) as "if s2 in ADS(5)?". Witch means check if s2 in diff set between Current Op. Atom's pre and its father's post. In this case, that is the set diff of [s1,s2,s3]  (post of 8) and [s0,s1]  (pre of 5), that is [s1]. Because s2 not in [s1], STOP.
 
-Note 2: In the same way, 2(<5>,3,6) means "if 2 in ADS(5)?" or "if 2 in ADS(3)?" or "if 2 in ADS(6)?". If some of the answers is true, we can choose one of it, with is marked with <>. If neither of answer is true, STOP.
+Note 2: In the same way, s2(<5>,3,6) means "if s2 in ADS(5)?" or "if s2 in ADS(3)?" or "if s2 in ADS(6)?". If some of the answers is true, we can choose one of it, with is marked with <>. If neither of answer is true, STOP.
 
 
 Level 3: Spread to Tree.
